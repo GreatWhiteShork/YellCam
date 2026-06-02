@@ -6,7 +6,7 @@ var runningVolume = 0;
 var latestPhoto;
 var displayTimer = 0;
 var mult = 1;
-var timeSet = 60 * mult;
+var timeSet = 1;
 var volumeThreshold = 35; 
 
 var takingPhoto = false; 
@@ -30,7 +30,7 @@ curPhoto = cam.get(0,0,cam.width,cam.height);
 
 if ( takingPhoto) {
 image(latestPhoto,0,0,windowWidth, windowHeight) ;
-fill(255, 255,255,(displayTimer - 60*mult/2) * 4 );
+fill(255, 255,255, 255);
 rect(0,0,windowWidth, windowHeight) 
 if ( displayTimer-- < 0  ) takingPhoto = false;
 return;
@@ -85,5 +85,5 @@ takingPhoto = true;
 latestPhoto = curPhoto;
 displayTimer = timeSet;
 runningVolume = 0;
-save(latestPhoto, 'emily photo.png' ) 
+save(latestPhoto, 'emily photo'+millis()+'.png' ) 
 } 
