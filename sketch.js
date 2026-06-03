@@ -24,7 +24,7 @@ facingMode: 'environment'
    } 
 });
   tH = cam.width * 3;
-  tW = cam.height * 3 * 2;
+  tW = cam.height * 3 * 3;
 cam.hide(); 
 
 createCanvas(tW, tH);
@@ -50,8 +50,8 @@ createCanvas(tW, tH);
       analyser.getByteFrequencyData(array);
       const arraySum = array.reduce((a, value) => a + value, 0);
       runningVolume = arraySum / array.length;
-      // volArray[volIndex++] = runningVolume;
-    
+      volArray[volIndex++] = runningVolume;
+      //if ( volIndex > 14) volIndex = 0;
       
      // console.log(Math.round(average));
       // colorPids(average);
@@ -76,6 +76,7 @@ if ( displayTimer-- < 0  ) takingPhoto = false;
 return;
 } 
 image(curPhoto,0,0,tW, tH) ; 
+  
 
 // Source - https://stackoverflow.com/a/52952907
 // Posted by Morphasis, modified by community. See post 'Timeline' for change history
@@ -91,6 +92,8 @@ if ( runningVolume > volumeThreshold ) takePhoto() ;
 
   fill(255);
   rect(tW * volumeThreshold / 100, 0,5, 30);
+ fill(255,0,0);
+  text(volArray.length, 50, 50);
 } 
 
 
