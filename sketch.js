@@ -37,7 +37,7 @@ curPhoto = cam.get(0,0, cam.width, cam.height );
 if ( takingPhoto) {
 image(latestPhoto,0,0,tW, tH) ;
 fill(255, 255,255, 0);
-  if ( timeSet - diaplayTimer < 20) fill(255);
+  if ( timeSet - displayTimer < 20) fill(255);
 rect(0,0,tW, tH) 
 if ( displayTimer-- < 0  ) takingPhoto = false;
 return;
@@ -87,6 +87,8 @@ rect(0,0,windowWidth * runningVolume / 100, 30);
 
 if ( runningVolume > volumeThreshold ) takePhoto() ; 
 
+  fill(255);
+  rect(windowWidth * volumeThreshold / 100, 0,5, 30);
 } 
 
 
