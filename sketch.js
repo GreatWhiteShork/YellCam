@@ -11,7 +11,7 @@ var volArray = [];
 var volInd = 0;
 
 var tW, tH;
-var volumeThreshold = 55;
+var volumeThreshold = 45;
 
 var takingPhoto = false; 
 
@@ -24,7 +24,7 @@ facingMode: 'environment'
    } 
 });
   tH = cam.width * 3;
-  tW = cam.height *  pixelDensity() * 3;
+  tW = cam.height * 3 * 2;
 cam.hide(); 
 
 createCanvas(tW, tH);
