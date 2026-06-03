@@ -6,7 +6,7 @@ var runningVolume = 0;
 var latestPhoto;
 var displayTimer = 0;
 var mult = 1;
-var timeSet = 120;
+var timeSet = 60;
 var volArray = [];
 var volInd = 0;
 
@@ -28,27 +28,8 @@ facingMode: 'environment'
 cam.hide(); 
 
 createCanvas(tW, tH);
-} 
 
-function draw() {
-curPhoto = cam.get(0,0, cam.width, cam.height );
-
-
-if ( takingPhoto) {
-image(latestPhoto,0,0,tW, tH) ;
-fill(255, 255,255, 0);
-  if ( timeSet - displayTimer < 20) fill(255);
-rect(0,0,tW, tH) 
-if ( displayTimer-- < 0  ) takingPhoto = false;
-return;
-} 
-image(curPhoto,0,0,tW, tH) ; 
-
-// Source - https://stackoverflow.com/a/52952907
-// Posted by Morphasis, modified by community. See post 'Timeline' for change history
-// Retrieved 2026-06-02, License - CC BY-SA 4.0
-
-navigator.mediaDevices.getUserMedia({
+  navigator.mediaDevices.getUserMedia({
   audio: true,
   video: true
 })
@@ -80,15 +61,36 @@ navigator.mediaDevices.getUserMedia({
     /* handle the error */
     console.error(err);
   }); 
+} 
+
+function draw() {
+curPhoto = cam.get(0,0, cam.width, cam.height );
+
+
+if ( takingPhoto) {
+image(latestPhoto,0,0,tW, tH) ;
+fill(255, 255,255, 0);
+  if ( timeSet - displayTimer < 16 ) fill(255);
+rect(0,0,tW, tH) 
+if ( displayTimer-- < 0  ) takingPhoto = false;
+return;
+} 
+image(curPhoto,0,0,tW, tH) ; 
+
+// Source - https://stackoverflow.com/a/52952907
+// Posted by Morphasis, modified by community. See post 'Timeline' for change history
+// Retrieved 2026-06-02, License - CC BY-SA 4.0
+
+
 
 fill(255,0,0);
   if ( runningVolume > volumeThreshold) fill(0,255,0);
-rect(0,0,windowWidth * runningVolume / 100, 30); 
+rect(0,0,tW * runningVolume / 100, 30); 
 
 if ( runningVolume > volumeThreshold ) takePhoto() ; 
 
   fill(255);
-  rect(windowWidth * volumeThreshold / 100, 0,5, 30);
+  rect(tW * volumeThreshold / 100, 0,5, 30);
 } 
 
 
