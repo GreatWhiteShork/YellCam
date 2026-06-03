@@ -11,7 +11,7 @@ var volArray = [];
 var volInd = 0;
 
 var tW, tH;
-var volumeThreshold = 35;
+var volumeThreshold = 55;
 
 var takingPhoto = false; 
 
@@ -57,7 +57,7 @@ navigator.mediaDevices.getUserMedia({
     const microphone = audioContext.createMediaStreamSource(stream);
     const scriptProcessor = audioContext.createScriptProcessor(2048, 1, 1); 
 
-    analyser.smoothingTimeConstant = 0.2;
+    analyser.smoothingTimeConstant = 0.3;
     analyser.fftSize = 1024; 
 
     microphone.connect(analyser);
