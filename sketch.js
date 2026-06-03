@@ -6,7 +6,7 @@ var runningVolume = 0;
 var latestPhoto;
 var displayTimer = 0;
 var mult = 1;
-var timeSet = 1;
+var timeSet = 120;
 var volArray = [];
 var volInd = 0;
 
@@ -31,12 +31,13 @@ createCanvas(tW, tH);
 } 
 
 function draw() {
-curPhoto = cam.get(0,0, tW, tH);
+curPhoto = cam.get(0,0, cam.width, cam.height );
 
 
 if ( takingPhoto) {
 image(latestPhoto,0,0,tW, tH) ;
-fill(255, 255,255, 255);
+fill(255, 255,255, 0);
+  if ( timeSet - diaplayTimer < 20) fill(255);
 rect(0,0,tW, tH) 
 if ( displayTimer-- < 0  ) takingPhoto = false;
 return;
