@@ -23,8 +23,8 @@ cam = createCapture({
 facingMode: 'environment' 
    } 
 });
-  tW = cam.width * 3;
-  tH = cam.height * 3;
+  tH = cam.width * 3;
+  tW = cam.height * 3;
 cam.hide(); 
 
 createCanvas(tW, tH);
