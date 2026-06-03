@@ -7,7 +7,11 @@ var latestPhoto;
 var displayTimer = 0;
 var mult = 1;
 var timeSet = 1;
-var volumeThreshold = 35; 
+var volArray = [];
+var volInd = 0;
+
+var tW, tH;
+var volumeThreshold = 35;
 
 var takingPhoto = false; 
 
@@ -19,23 +23,25 @@ cam = createCapture({
 facingMode: 'environment' 
    } 
 });
+  tW = cam.width;
+  tH = cam.height;
 cam.hide(); 
 
-createCanvas(windowWidth, windowHeight);
+createCanvas(tW, tH);
 } 
 
 function draw() {
-curPhoto = cam.get(0,0,cam.width,cam.height);
+curPhoto = cam.get(0,0, tW, tH);
 
 
 if ( takingPhoto) {
-image(latestPhoto,0,0,windowWidth, windowHeight) ;
+image(latestPhoto,0,0,tW, tH) ;
 fill(255, 255,255, 255);
-rect(0,0,windowWidth, windowHeight) 
+rect(0,0,tW, tH) 
 if ( displayTimer-- < 0  ) takingPhoto = false;
 return;
 } 
-image(curPhoto,0,0,windowWidth, windowHeight) ; 
+image(curPhoto,0,0,tW, tH) ; 
 
 // Source - https://stackoverflow.com/a/52952907
 // Posted by Morphasis, modified by community. See post 'Timeline' for change history
@@ -62,6 +68,9 @@ navigator.mediaDevices.getUserMedia({
       analyser.getByteFrequencyData(array);
       const arraySum = array.reduce((a, value) => a + value, 0);
       runningVolume = arraySum / array.length;
+      // volArray[volIndex++] = runningVolume;
+    
+      
      // console.log(Math.round(average));
       // colorPids(average);
     };
@@ -72,7 +81,8 @@ navigator.mediaDevices.getUserMedia({
   }); 
 
 fill(255,0,0);
-//rect(0,0,windowWidth * runningVolume / 100, 30); 
+  if ( runningVolume > volumeThreshold) fill(0,255,0);
+rect(0,0,windowWidth * runningVolume / 100, 30); 
 
 if ( runningVolume > volumeThreshold ) takePhoto() ; 
 
