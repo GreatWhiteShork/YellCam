@@ -24,7 +24,7 @@ facingMode: 'environment'
    } 
 });
   tH = cam.width * 3;
-  tW = cam.height * 3;
+  tW = cam.height *  pixelDensity() * 3;
 cam.hide(); 
 
 createCanvas(tW, tH);
