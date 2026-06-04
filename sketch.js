@@ -69,9 +69,7 @@ createCanvas(tW, tH);
 
 function draw() {
 curPhoto = cam.get(0,0, cam.width, cam.height );
-if ( takingPhoto) {
-  photoTimer--;
-} 
+
 var volAverage = 0;
   for ( var i = 0, iL = volArray.length; i < iL; i++) {
     volAverage += volArray[i];
