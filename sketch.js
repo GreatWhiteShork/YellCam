@@ -23,7 +23,7 @@ cam = createCapture({
 facingMode: 'environment' 
    } 
 });
-  tH = cam.width * 3 * 2;
+  tH = cam.width * 3 * 1;
   tW = cam.height * 3 * 1;
 cam.hide(); 
 
@@ -50,7 +50,7 @@ createCanvas(tW, tH);
       analyser.getByteFrequencyData(array);
       const arraySum = array.reduce((a, value) => a + value, 0);
       runningVolume = arraySum / array.length;
-      volArray[volIndex++] = runningVolume;
+      volArray[volInd++] = runningVolume;
       //if ( volIndex > 14) volIndex = 0;
       
      // console.log(Math.round(average));
@@ -93,7 +93,7 @@ if ( runningVolume > volumeThreshold ) takePhoto() ;
   fill(255);
   rect(tW * volumeThreshold / 100, 0,5, 30);
  fill(255,0,0);
-  text(volArray.length, 50, 50);
+  text(volInd, 50, 50);
 } 
 
 
