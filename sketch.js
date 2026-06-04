@@ -96,7 +96,7 @@ image(curPhoto,0,0,tW, tH) ;
 
 
 
-fill(255,0,0);
+fill(255,255,0);
   if ( runningVolume > volumeThreshold) fill(0,255,0);
 rect(0,0,tW * runningVolume / 100, 30); 
 
