@@ -7,13 +7,15 @@ var latestPhoto;
 var displayTimer = 0;
 var mult = 1;
 var timeSet = 60;
-var volArray = [];
-var volInd = 0;
+var volArray = [200];
+var volInd = 1;
 var volLimit = 20;
+var photoTimer = 5;
+var curTimer = photoTimer;
 
 var tW, tH;
 var volumeThreshold = 45;
-var volThreshAdd = 20;
+var volThreshAdd = 30;
 
 var takingPhoto = false; 
 
@@ -67,7 +69,9 @@ createCanvas(tW, tH);
 
 function draw() {
 curPhoto = cam.get(0,0, cam.width, cam.height );
-
+if ( takingPhoto) {
+  photoTimer--;
+} 
 var volAverage = 0;
   for ( var i = 0, iL = volArray.length; i < iL; i++) {
     volAverage += volArray[i];
@@ -75,7 +79,7 @@ var volAverage = 0;
   volAverage /= volArray.length;
   volumeThreshold = volAverage + volThreshAdd;
 
-if ( takingPhoto) {
+if ( takingPhoto && ) {
 image(latestPhoto,0,0,tW, tH) ;
 fill(255, 255,255, 0);
   if ( timeSet - displayTimer < 16 ) fill(255);
