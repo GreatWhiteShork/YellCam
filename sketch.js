@@ -77,7 +77,7 @@ var volAverage = 0;
   volAverage /= volArray.length;
   volumeThreshold = volAverage + volThreshAdd;
 
-if ( takingPhoto && ) {
+if ( takingPhoto ) {
 image(latestPhoto,0,0,tW, tH) ;
 fill(255, 255,255, 0);
   if ( timeSet - displayTimer < 16 ) fill(255);
