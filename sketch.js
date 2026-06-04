@@ -10,7 +10,7 @@ var timeSet = 60;
 var volArray = [200];
 var volInd = 1;
 var volLimit = 20;
-var photoTimer = 5;
+var photoTimer = 10;
 var curTimer = photoTimer;
 
 var tW, tH;
@@ -100,7 +100,11 @@ fill(255,0,0);
   if ( runningVolume > volumeThreshold) fill(0,255,0);
 rect(0,0,tW * runningVolume / 100, 30); 
 
-if ( runningVolume > volumeThreshold ) takePhoto() ; 
+if ( runningVolume > volumeThreshold ) {
+  takePhoto() ; 
+} else {
+curTimer = photoTimer;
+} 
 
   fill(255);
   rect(tW * volumeThreshold / 100, 0,5, 30);
@@ -113,9 +117,12 @@ if ( runningVolume > volumeThreshold ) takePhoto() ;
 
 
 function takePhoto () {
+  curTimer--;
+  if ( curTimer > 0) return;
 takingPhoto = true;
 latestPhoto = curPhoto;
 displayTimer = timeSet;
 runningVolume = 0;
+  curTimer = photoTimer;
 save(latestPhoto, 'emily photo'+millis()+'.png' ) 
 } 
