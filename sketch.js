@@ -9,9 +9,11 @@ var mult = 1;
 var timeSet = 60;
 var volArray = [];
 var volInd = 0;
+var volLimit = 20;
 
 var tW, tH;
 var volumeThreshold = 45;
+var volThreshAdd = 20;
 
 var takingPhoto = false; 
 
@@ -51,7 +53,7 @@ createCanvas(tW, tH);
       const arraySum = array.reduce((a, value) => a + value, 0);
       runningVolume = arraySum / array.length;
       volArray[volInd++] = runningVolume;
-      //if ( volIndex > 14) volIndex = 0;
+      if ( volInd > volLimit) volIndex = 0;
       
      // console.log(Math.round(average));
       // colorPids(average);
@@ -66,6 +68,12 @@ createCanvas(tW, tH);
 function draw() {
 curPhoto = cam.get(0,0, cam.width, cam.height );
 
+var volAverage = 0;
+  for ( var i = 0, iL = volArray.length; i < iL; i++) {
+    volAverage += volArray[i];
+  } 
+  volAverage /= volArray.length;
+  volumeThreshold = volAverage + volThreshAdd;
 
 if ( takingPhoto) {
 image(latestPhoto,0,0,tW, tH) ;
@@ -94,6 +102,8 @@ if ( runningVolume > volumeThreshold ) takePhoto() ;
   rect(tW * volumeThreshold / 100, 0,5, 30);
  fill(255,0,0);
   text(volInd, 50, 50);
+  text("avg:" +volAverage, 50,100);
+  text(runningVolume, 50,150);
 } 
 
 
