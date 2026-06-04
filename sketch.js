@@ -9,13 +9,13 @@ var mult = 1;
 var timeSet = 60;
 var volArray = [200];
 var volInd = 1;
-var volLimit = 20;
-var photoTimer = 10;
+var volLimit = 10;
+var photoTimer = 20;
 var curTimer = photoTimer;
 
 var tW, tH;
 var volumeThreshold = 45;
-var volThreshAdd = 30;
+var volThreshAdd = 20;
 
 var takingPhoto = false; 
 
@@ -107,9 +107,9 @@ curTimer = photoTimer;
   fill(255);
   rect(tW * volumeThreshold / 100, 0,5, 30);
  fill(255,0,0);
-  text(volInd, 50, 50);
-  text("avg:" +volAverage, 50,100);
-  text(runningVolume, 50,150);
+ // text(volInd, 50, 50);
+  //text("avg:" +volAverage, 50,100);
+ // text(runningVolume, 50,150);
 } 
 
 
