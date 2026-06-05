@@ -10,14 +10,14 @@ var mult = 1;
 var timeSet = 30;
 var volArray = [200];
 var volInd = 1;
-var volLimit = 30;
-var photoTimer = 14;
+var volLimit = 28;
+var photoTimer = 11;
 var curTimer = photoTimer;
 var circleMask;
 
 var tW, tH;
 var volumeThreshold = 45;
-var volThreshAdd = 15;
+var volThreshAdd = 16;
 
 var takingPhoto = false; 
 var cornerSize = 150;
@@ -108,20 +108,21 @@ image(curPhoto,0,0,tW, tH) ;
 // Posted by Morphasis, modified by community. See post 'Timeline' for change history
 // Retrieved 2026-06-02, License - CC BY-SA 4.0
 
-
+var targetHit = runningVolume > volumeThreshold;
 
 fill(255,255,0);
-  if ( runningVolume > volumeThreshold && curTimer < 2 ) fill(0,255,0,0);
+  if ( targetHit) fill(0,255,0);
+  if ( targetHit && curTimer < 2 ) fill(0,255,0,0);
 rect(0,0,tW * runningVolume / 100, 30); 
 
-if ( runningVolume > volumeThreshold ) {
+if ( targetHit ) {
   takePhoto() ; 
 } else {
 curTimer = photoTimer;
 } 
 
   fill(255);
-  if ( runningVolume > volumeThreshold && curTimer < 2) fill(0,0,0,0);
+  if ( targetHit && curTimer < 2) fill(0,0,0,0);
   rect(tW * volumeThreshold / 100, 0,5, 30);
  //fill(255,0,0);
  // text(volInd, 50, 50);
