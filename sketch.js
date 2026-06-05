@@ -41,7 +41,7 @@ facingMode: 'environment'
     video: {
       facingMode: 'user' 
     } 
-  });
+  }, {flipped: true} );
 cam.hide(); 
 fCam.hide();
 createCanvas(tW, tH);
