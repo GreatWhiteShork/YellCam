@@ -10,9 +10,10 @@ var mult = 1;
 var timeSet = 60;
 var volArray = [200];
 var volInd = 1;
-var volLimit = 35;
-var photoTimer = 8;
+var volLimit = 30;
+var photoTimer = 14;
 var curTimer = photoTimer;
+var circleMask;
 
 var tW, tH;
 var volumeThreshold = 45;
@@ -23,6 +24,9 @@ var cornerSize = 150;
 
 function setup() { 
 
+  circleMask = createGraphics(cornerSize, cornerSize);
+  circleMask.fill(0,0,0,1);
+  circleMask.circle(cornerSize/2, cornerSize/2,cornerSize);
 cam = createCapture({
     audio: false, 
     video: {
@@ -95,7 +99,9 @@ if ( displayTimer-- < 0  ) takingPhoto = false;
 return;
 } 
 image(curPhoto,0,0,tW, tH) ;
-  image(fCam.get(0,0,fCam.width,fCam.height),width-cornerSize*1.5,height-cornerSize,cornerSize*1.5,cornerSize);
+  var fCamImage = fCam.get(0,0,fCam.width,fCam.height);
+  fCamImage.mask(circleMask);
+  image(fCamImage,width-cornerSize*1,height-cornerSize*1.5,cornerSize*1,cornerSize*1.5);
   
 
 // Source - https://stackoverflow.com/a/52952907
