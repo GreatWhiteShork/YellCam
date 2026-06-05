@@ -10,15 +10,16 @@ var mult = 1;
 var timeSet = 60;
 var volArray = [200];
 var volInd = 1;
-var volLimit = 30;
-var photoTimer = 14;
+var volLimit = 35;
+var photoTimer = 8;
 var curTimer = photoTimer;
 
 var tW, tH;
 var volumeThreshold = 45;
-var volThreshAdd = 15;
+var volThreshAdd = 10;
 
 var takingPhoto = false; 
+var cornerSize = 150;
 
 function setup() { 
 
@@ -94,7 +95,7 @@ if ( displayTimer-- < 0  ) takingPhoto = false;
 return;
 } 
 image(curPhoto,0,0,tW, tH) ;
-  image(fCam.get(0,0,fCam.width,fCam.height),width-50,height-50,50,50);
+  image(fCam.get(0,0,fCam.width,fCam.height),width-cornerSize*1.5,height-cornerSize,cornerSize*1.5,cornerSize);
   
 
 // Source - https://stackoverflow.com/a/52952907
@@ -131,5 +132,5 @@ latestPhoto = curPhoto;
 displayTimer = timeSet;
 runningVolume = 0;
   curTimer = photoTimer;
-save(latestPhoto, 'emily photo'+millis()+'.png' ) 
+saveCanvas('emily photo'+millis()+'.png' ) 
 } 
