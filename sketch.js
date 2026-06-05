@@ -1,6 +1,7 @@
 p5.disableFriendlyErrors = true; 
 
 var cam;
+var fCam;
 var curPhoto;
 var runningVolume = 0;
 var latestPhoto;
@@ -28,9 +29,16 @@ facingMode: 'environment'
    } 
 });
   tH = cam.width * 4 * 1;
-  tW = cam.height * 4 * 1;
-cam.hide(); 
+  tW = cam.height * 4 * 1.5;
 
+  fCam = createCapture({
+    audio: false, 
+    video: {
+      facingMode: 'user' 
+    } 
+  });
+cam.hide(); 
+fCam.hide();
 createCanvas(tW, tH);
 
   navigator.mediaDevices.getUserMedia({
@@ -85,7 +93,8 @@ rect(0,0,tW, tH)
 if ( displayTimer-- < 0  ) takingPhoto = false;
 return;
 } 
-image(curPhoto,0,0,tW, tH) ; 
+image(curPhoto,0,0,tW, tH) ;
+  image(fCam.get(0,0,fCam.width,fCam.height),width-50,height-50,50,50);
   
 
 // Source - https://stackoverflow.com/a/52952907
