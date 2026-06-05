@@ -10,14 +10,14 @@ var mult = 1;
 var timeSet = 30;
 var volArray = [200];
 var volInd = 1;
-var volLimit = 30;
+var volLimit = 37;
 var photoTimer = 11;
 var curTimer = photoTimer;
 var circleMask;
 
 var tW, tH;
 var volumeThreshold = 45;
-var volThreshAdd = 18;
+var volThreshAdd = 14;
 
 var takingPhoto = false; 
 var cornerSize = 200;
