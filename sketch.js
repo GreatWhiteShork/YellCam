@@ -91,7 +91,8 @@ var volAverage = 0;
     volAverage += volArray[i];
   } 
   volAverage /= volArray.length;
-  var tempThresh = 1 - ((volAverage+0.01) / 100);
+  var tempThresh =  ((volAverage+0.01) / 100);
+  tempThresh = 1 - (tempThresh * tempThresh) ;
   volumeThreshold = volAverage + volThreshAdd * tempThresh;
 
 if ( takingPhoto ) {
