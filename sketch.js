@@ -20,13 +20,15 @@ var volumeThreshold = 45;
 var volThreshAdd = 16;
 
 var takingPhoto = false; 
-var cornerSize = 150;
+var cornerSize = 200;
 
 function setup() { 
 noStroke();
   circleMask = createGraphics(cornerSize, cornerSize);
   circleMask.fill(0,0,0,255);
   circleMask.circle(cornerSize/2, cornerSize/2,cornerSize);
+  circleMask.rectangle(cornerSize/2,0,cornerSize,cornerSize);
+  circleMask.rectangle(0,cornerSize/2,cornerSize,cornerSize)
 cam = createCapture({
     audio: false, 
     video: {
