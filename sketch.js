@@ -11,13 +11,13 @@ var timeSet = 60;
 var volArray = [200];
 var volInd = 1;
 var volLimit = 30;
-var photoTimer = 14;
+var photoTimer = 12;
 var curTimer = photoTimer;
 var circleMask;
 
 var tW, tH;
 var volumeThreshold = 45;
-var volThreshAdd = 10;
+var volThreshAdd = 15;
 
 var takingPhoto = false; 
 var cornerSize = 150;
