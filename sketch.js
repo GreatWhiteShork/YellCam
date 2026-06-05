@@ -21,6 +21,7 @@ var volThreshAdd = 16;
 
 var takingPhoto = false; 
 var cornerSize = 200;
+var cornerLarge = 350;
 
 function setup() { 
 noStroke();
@@ -90,7 +91,8 @@ var volAverage = 0;
     volAverage += volArray[i];
   } 
   volAverage /= volArray.length;
-  volumeThreshold = volAverage + volThreshAdd;
+  var tempThresh = 1 - ((volAverage+0.01) / 100);
+  volumeThreshold = volAverage + volThreshAdd * tempThresh;
 
 if ( takingPhoto ) {
 image(latestPhoto,0,0,tW, tH) ;
@@ -103,7 +105,6 @@ return;
 image(curPhoto,0,0,tW, tH) ;
   var fCamImage = fCam.get(0,0,fCam.width,fCam.height);
   fCamImage.mask(circleMask);
-  image(fCamImage,width-cornerSize*1,height-cornerSize*1.25,cornerSize*1,cornerSize*1.25);
   
 
 // Source - https://stackoverflow.com/a/52952907
@@ -111,7 +112,13 @@ image(curPhoto,0,0,tW, tH) ;
 // Retrieved 2026-06-02, License - CC BY-SA 4.0
 
 var targetHit = runningVolume > volumeThreshold;
-
+if ( targetHit && curTimer < 2) {
+image(fCamImage,width-cornerLarge*1,height-cornerLarge*1.25,cornerLarge*1,cornerLarge*1.25);
+  
+} else {
+image(fCamImage,width-cornerSize*1,height-cornerSize*1.25,cornerSize*1,cornerSize*1.25);
+  
+} 
 fill(255,255,0);
   if ( targetHit) fill(0,255,0);
   if ( targetHit && curTimer < 2 ) fill(0,255,0,0);
