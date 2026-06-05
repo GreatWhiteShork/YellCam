@@ -101,7 +101,7 @@ return;
 image(curPhoto,0,0,tW, tH) ;
   var fCamImage = fCam.get(0,0,fCam.width,fCam.height);
   fCamImage.mask(circleMask);
-  image(fCamImage,width-cornerSize*1,height-cornerSize*1.5,cornerSize*1,cornerSize*1.5);
+  image(fCamImage,width-cornerSize*1,height-cornerSize*1,cornerSize*1,cornerSize*1);
   
 
 // Source - https://stackoverflow.com/a/52952907
