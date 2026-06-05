@@ -11,7 +11,7 @@ var timeSet = 30;
 var volArray = [200];
 var volInd = 1;
 var volLimit = 30;
-var photoTimer = 12;
+var photoTimer = 14;
 var curTimer = photoTimer;
 var circleMask;
 
@@ -23,7 +23,7 @@ var takingPhoto = false;
 var cornerSize = 150;
 
 function setup() { 
-
+noStroke();
   circleMask = createGraphics(cornerSize, cornerSize);
   circleMask.fill(0,0,0,255);
   circleMask.circle(cornerSize/2, cornerSize/2,cornerSize);
@@ -101,7 +101,7 @@ return;
 image(curPhoto,0,0,tW, tH) ;
   var fCamImage = fCam.get(0,0,fCam.width,fCam.height);
   fCamImage.mask(circleMask);
-  image(fCamImage,width-cornerSize*1,height-cornerSize*1,cornerSize*1,cornerSize*1);
+  image(fCamImage,width-cornerSize*1,height-cornerSize*1.25,cornerSize*1,cornerSize*1.25);
   
 
 // Source - https://stackoverflow.com/a/52952907
