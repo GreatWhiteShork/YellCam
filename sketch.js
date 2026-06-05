@@ -25,7 +25,7 @@ var cornerSize = 150;
 function setup() { 
 
   circleMask = createGraphics(cornerSize, cornerSize);
-  circleMask.fill(0,0,0,1);
+  circleMask.fill(0,0,0,255);
   circleMask.circle(cornerSize/2, cornerSize/2,cornerSize);
 cam = createCapture({
     audio: false, 
