@@ -9,7 +9,7 @@ var mult = 1;
 var timeSet = 60;
 var volArray = [200];
 var volInd = 1;
-var volLimit = 10;
+var volLimit = 20;
 var photoTimer = 20;
 var curTimer = photoTimer;
 
@@ -55,7 +55,7 @@ createCanvas(tW, tH);
       const arraySum = array.reduce((a, value) => a + value, 0);
       runningVolume = arraySum / array.length;
       volArray[volInd++] = runningVolume;
-      if ( volInd > volLimit) volIndex = 0;
+      if ( volInd > volLimit) volInd = 0;
       
      // console.log(Math.round(average));
       // colorPids(average);
