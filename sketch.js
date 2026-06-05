@@ -111,7 +111,7 @@ image(curPhoto,0,0,tW, tH) ;
 
 
 fill(255,255,0);
-  if ( runningVolume > volumeThreshold) fill(0,255,0,0);
+  if ( runningVolume > volumeThreshold && curTimer < 2 ) fill(0,255,0,0);
 rect(0,0,tW * runningVolume / 100, 30); 
 
 if ( runningVolume > volumeThreshold ) {
@@ -121,7 +121,7 @@ curTimer = photoTimer;
 } 
 
   fill(255);
-  if ( runningVolume > volumeThreshold) fill(0,0,0,0);
+  if ( runningVolume > volumeThreshold && curTimer < 2) fill(0,0,0,0);
   rect(tW * volumeThreshold / 100, 0,5, 30);
  //fill(255,0,0);
  // text(volInd, 50, 50);
