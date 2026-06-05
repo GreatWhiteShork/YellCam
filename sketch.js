@@ -27,8 +27,8 @@ noStroke();
   circleMask = createGraphics(cornerSize, cornerSize);
   circleMask.fill(0,0,0,255);
   circleMask.circle(cornerSize/2, cornerSize/2,cornerSize);
-  circleMask.rectangle(cornerSize/2,0,cornerSize,cornerSize);
-  circleMask.rectangle(0,cornerSize/2,cornerSize,cornerSize)
+  circleMask.rect(cornerSize/2,0,cornerSize,cornerSize);
+  circleMask.rect(0,cornerSize/2,cornerSize,cornerSize)
 cam = createCapture({
     audio: false, 
     video: {
