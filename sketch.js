@@ -7,7 +7,7 @@ var runningVolume = 0;
 var latestPhoto;
 var displayTimer = 0;
 var mult = 1;
-var timeSet = 60;
+var timeSet = 30;
 var volArray = [200];
 var volInd = 1;
 var volLimit = 30;
@@ -93,7 +93,7 @@ var volAverage = 0;
 if ( takingPhoto ) {
 image(latestPhoto,0,0,tW, tH) ;
 fill(255, 255,255, 0);
-  if ( timeSet - displayTimer < 16 ) fill(255);
+  if ( timeSet - displayTimer < 8 ) fill(255);
 rect(0,0,tW, tH) 
 if ( displayTimer-- < 0  ) takingPhoto = false;
 return;
@@ -111,7 +111,7 @@ image(curPhoto,0,0,tW, tH) ;
 
 
 fill(255,255,0);
-  if ( runningVolume > volumeThreshold) fill(0,255,0);
+  if ( runningVolume > volumeThreshold) fill(0,255,0,0);
 rect(0,0,tW * runningVolume / 100, 30); 
 
 if ( runningVolume > volumeThreshold ) {
@@ -121,8 +121,9 @@ curTimer = photoTimer;
 } 
 
   fill(255);
+  if ( runningVolume > volumeThreshold) fill(0,0,0,0);
   rect(tW * volumeThreshold / 100, 0,5, 30);
- fill(255,0,0);
+ //fill(255,0,0);
  // text(volInd, 50, 50);
   //text("avg:" +volAverage, 50,100);
  // text(runningVolume, 50,150);
