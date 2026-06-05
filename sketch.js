@@ -9,13 +9,13 @@ var mult = 1;
 var timeSet = 60;
 var volArray = [200];
 var volInd = 1;
-var volLimit = 20;
-var photoTimer = 20;
+var volLimit = 30;
+var photoTimer = 14;
 var curTimer = photoTimer;
 
 var tW, tH;
 var volumeThreshold = 45;
-var volThreshAdd = 20;
+var volThreshAdd = 15;
 
 var takingPhoto = false; 
 
