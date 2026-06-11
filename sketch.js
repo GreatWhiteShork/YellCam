@@ -1,7 +1,7 @@
 p5.disableFriendlyErrors = true; 
 
-var cam;
 var fCam;
+var cam;
 var curPhoto;
 var runningVolume = 0;
 var latestPhoto;
